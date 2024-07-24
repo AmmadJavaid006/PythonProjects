@@ -1,0 +1,11 @@
+1. Initialize an empty dictionary to store student grades.
+2. Initialize variables to keep track of total grades, highest grade, and lowest grade.
+3. Try to open the file.
+4. For each line in the file:
+    a. Strip any leading/trailing whitespace.
+    b. Check if the line contains "Student name:" and "Student grade:".
+    c. Try to extract the name and grade from the line.
+    d. If successful, add to the dictionary and update total, highest, and lowest grades.
+    e. If unsuccessful, print an error message or ignore the line.
+5. Calculate the average grade.
+6. Print the results.

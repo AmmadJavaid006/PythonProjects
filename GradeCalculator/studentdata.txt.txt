@@ -1,0 +1,32 @@
+Student name: Alice, Student grade: 85
+This line is not relevant
+Student name: Bob, Student grade: 78
+Student name: Charlie, Student grade: 92
+Ignore this line too
+Student name: David, Student grade: 60
+Student name: Eva, Student grade: 88
+Random text
+More random nonsense
+12345
+!@#$%
+Lorem ipsum dolor sit amet
+Just another irrelevant line
+Something that doesn't make sense
+Another random sentence
+Completely unrelated content
+More gibberish
+Random words here
+Yet another useless line
+Non-data text
+More nonsense data
+Invalid line 1
+Invalid line 2
+Extra text
+Non-grade content
+More irrelevant stuff
+Totally unrelated
+Some more junk text
+Just filling space
+Not useful information
+Random data
+Another filler line
