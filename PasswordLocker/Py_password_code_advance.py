@@ -1,7 +1,7 @@
 import re, pyperclip, sys
 
-def load_credentials(file_path):
-    passwordfile = open(file_path, 'r')
+def load_credentials():
+    passwordfile = open("Passwords.txt", 'r')
     readfile = passwordfile.read()
     passwordfile.close()
     websites = re.findall(r"Website:\s*(\S*)", readfile)
