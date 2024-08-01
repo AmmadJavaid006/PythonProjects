@@ -3,14 +3,19 @@ from cryptography.fernet import Fernet
 
 key = b'vbBaf5kSdiwjHsB6gRhhz5Vh1f36VEUaDLy4akH9pc8='
 fernet_key = Fernet(key)
+list = list()
 
 def load_credentials():
     passwordfile = open("Passwords.txt", 'r')
     readfile = passwordfile.read()
     passwordfile.close()
     websites = re.findall(r"Website:\s*(\S*)", readfile)
-    passwords = re.findall(r"Password:\s*(\S*)", readfile)
-    return dict(zip(websites, passwords))
+    inpasswords = re.findall(r"Password:\s*(\S*)", readfile)
+    for z in inpasswords:
+        passwords = z.encode("utf-8")
+        passwordas = fernet_key.decrypt(passwords)
+        list.append(passwordas.decode("utf-8"))
+    return dict(zip(websites, list))
 
 def save_credentials(credentials):
     passwordfile = open("Passwords.txt", 'w')
