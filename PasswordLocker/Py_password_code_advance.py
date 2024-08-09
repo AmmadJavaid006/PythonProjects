@@ -20,20 +20,18 @@ def load_credentials():
 def save_credentials(credentials):
     passwordfile = open("Passwords.txt", 'w')
     for k, v in credentials.items():
+        v = v.encode("utf-8")
+        vv = fernet_key.encrypt(v).decode("utf-8")
         passwordfile.write(f"Website: {k}\n")
-        passwordfile.write(f"Password: {v}\n\n")
+        passwordfile.write(f"Password: {vv}\n\n")
     passwordfile.close()
 
 def changepass(webin, passin, credentials):
-    passin = passin.encode("utf-8")
-    finalpassin = fernet_key.encrypt(passin)
-    credentials[webin] = finalpassin.decode("utf-8")
+    credentials[webin] = passin
     save_credentials(credentials)
 
 def addpass(addpasskey, addpassval, credentials):
-    addpassval = addpassval.encode("utf-8")
-    values = fernet_key.encrypt(addpassval)
-    credentials[addpasskey] = values.decode("utf-8")
+    credentials[addpasskey] = addpassval
     save_credentials(credentials)
 
 def displaypass(credentials):
@@ -50,9 +48,8 @@ def displaykeys(credentials):
 
 def copypass(tocopy, credentials):
     values = credentials[tocopy]
-    values = values.encode("utf-8")
-    finalval = fernet_key.decrypt(values)
-    pyperclip.copy(finalval.decode("utf-8"))
+    pyperclip.copy(values)
+
 def masterpass():
     credentials = load_credentials()
     for tries in range(1, 4):
@@ -63,10 +60,10 @@ def masterpass():
                 if mode.lower() == "copy":
                     displaypass(credentials)
                     for countx in range(1, 4):
-                        passwordstocopy = input("Which Password You Want To Copy? : ")
+                        passwordtocopy = input("Which Password You Want To Copy? : ")
                         confirmuser = input("Enter Master Password Again To Copy: ")
-                        if passwordstocopy in credentials and confirmuser == "72364899**":
-                            copypass(passwordstocopy, credentials)
+                        if passwordtocopy in credentials and confirmuser == "72364899**":
+                            copypass(passwordtocopy, credentials)
                             print("Password Copied Successfully!")
                             break
                         else:
